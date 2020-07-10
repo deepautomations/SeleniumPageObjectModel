@@ -18,6 +18,10 @@ public class LoginPageTest extends BaseTest {
 	public void verifySignUpLink() {
 		Assert.assertTrue(loginPage.verifySignUpLink());
 	}
+	
+	public void getContactTestData() {
+		
+	}
 	@Test(priority=3)
 	public void doLoginTest() {
 		loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));

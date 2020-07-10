@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.hubspot.base.BasePage;
+import com.qa.hubspot.constants.Constants;
+import com.qa.hubspot.utilities.ElementUtil;
 
 public class LoginPage extends BasePage {
 
@@ -13,6 +15,8 @@ public class LoginPage extends BasePage {
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		eleutil=new ElementUtil(this.driver);
+		
 	}
 	
 	/**
@@ -27,19 +31,21 @@ public class LoginPage extends BasePage {
 
 	
 	public String getLoginPageTitle() {
-		return driver.getTitle();
+		return eleutil.waitForTitleToBePresent(Constants.LOGIN_PAGE_TITLE, 10);
 
 	}
 
 	public boolean verifySignUpLink() {
-		return (driver.findElement(SignUp).getText().equals("Sign up"));
+		
+		return eleutil.doIsDisplayed(SignUp);
 
 	}
 
 	public HomePage doLogin(String username, String password) {
-		driver.findElement(this.username).sendKeys(username);
-		driver.findElement(this.password).sendKeys(password);
-		driver.findElement(this.loginBtn).click();
+		eleutil.waitForElementPresent(this.username, 10);
+		eleutil.doSendKeys(this.username, username);
+		eleutil.doSendKeys(this.password, password);
+		eleutil.doClick(loginBtn);
 		return new HomePage(driver);
 
 	}

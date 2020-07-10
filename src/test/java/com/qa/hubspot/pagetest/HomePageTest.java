@@ -1,7 +1,6 @@
 package com.qa.hubspot.pagetest;
 
 import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,11 +17,6 @@ public class HomePageTest extends BaseTest {
 	
 	@Test(priority=1)
 	public void verifyHomePageTitleTest() {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		String homePageTitle=homePage.getHomePageTitle();
 		Assert.assertEquals(homePageTitle, Constants.HOME_PAGE_TITLE,"Home page title is not correct...");
 	}

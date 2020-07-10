@@ -61,6 +61,10 @@ public class ElementUtil {
 		waitForElementPresent(locator, 10);
 		return getElement(locator).isDisplayed();
 	}
+	
+	public String doGetTitle() {
+		return driver.getTitle();
+	}
 
 	// **********************************Drop Down Utils *********************************
 

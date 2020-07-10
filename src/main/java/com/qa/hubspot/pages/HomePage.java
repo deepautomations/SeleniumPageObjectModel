@@ -42,6 +42,12 @@ public class HomePage extends BasePage {
 
 	public String getUserAccount() {
 		eleutil.waitForElementPresent(userinfo, 15);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		eleutil.doClick(userinfo);
 		if (eleutil.doIsDisplayed(userinfo)) {
 			return eleutil.doGetText(userinfo);
